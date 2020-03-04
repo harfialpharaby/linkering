@@ -18,8 +18,6 @@ export default new Vuex.Store({
         method: "POST",
         body: JSON.stringify({ number })
       });
-
-      console.log(response.json());
       context.commit("SET_LINK", response.json());
     }
   },
