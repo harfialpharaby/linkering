@@ -1,0 +1,27 @@
+import Vue from "vue";
+import Vuex from "vuex";
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    link: null
+  },
+  mutations: {
+    SET_LINK(state, payload) {
+      state.link = payload.number;
+    }
+  },
+  actions: {
+    GET_LINK: async (context, number) => {
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        body: JSON.stringify({ number })
+      });
+
+      console.log(response.json());
+      context.commit("SET_LINK", response.json());
+    }
+  },
+  modules: {}
+});
