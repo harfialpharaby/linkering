@@ -14,10 +14,13 @@ export default new Vuex.Store({
   },
   actions: {
     GET_LINK: async (context, number) => {
-      const response = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        body: JSON.stringify({ number })
-      });
+      const response = await fetch(
+        "https://polar-dusk-25960.herokuapp.com/users",
+        {
+          method: "POST",
+          body: JSON.stringify({ number })
+        }
+      );
       context.commit("SET_LINK", response.json());
     }
   },

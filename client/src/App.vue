@@ -65,13 +65,16 @@ export default {
   methods: {
     async onSubmit(evt) {
       evt.preventDefault();
-      const response = await fetch("http://localhost:3000/users", {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.form) // body data type must match "Content-Type" header
-      });
+      const response = await fetch(
+        "https://polar-dusk-25960.herokuapp.com/users",
+        {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(this.form) // body data type must match "Content-Type" header
+        }
+      );
       const data = await response.json();
       this.form.waLink = data;
     }
